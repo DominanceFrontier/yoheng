@@ -1,0 +1,26 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    <h2>
+        Welcome to Yoheng, a travel blogroll for travelers by travelers.
+    </h2>
+    <div class="row">
+      <div class="col-xs-6">
+	<h3>
+          Here are some sample public posts written by members of the Yoheng community:
+        </h3>
+        <ul>
+          {% for article in articles %}
+            {% set article_id = article['id'] %}
+            {% set title = article['title'] %}
+	    <li>
+              <a href="{{ url_for('article', article_id=article_id) }}">
+                {{ title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

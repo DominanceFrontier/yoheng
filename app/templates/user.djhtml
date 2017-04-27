@@ -1,0 +1,40 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    {% set username = user['username'] %}
+    <h2><center>{{ username }}'s Profile</center></h2>
+    {% if session.get('user') %}
+      {% if user_rel == 'Friends' %}
+        <h3><center>You are connected with {{ username }} as a friend.</center></h3>
+      {% elif user_rel == 'Followers' %}
+        <h3><center>You are following {{ username }}.</center></h3>
+      {% elif user_rel == 'Private' %}
+        <h3><center>Hello, {{ username }}, this is your profile page.</center></h3>
+      {% else %}
+        <center>
+          <form action="{{ url_for('add_friend', target_id=user['id']) }}" method="POST">
+            <input type="submit" value="Add {{ username }} as a friend!" />
+          </form>
+        </center>
+      {% endif %}
+    {% endif %}
+    <div class="row">
+      <div class="col-xs-6">
+	<h3>
+          {{ username }} has the following articles published that are visible to you:
+        </h3>
+	<ul>
+          {% for article in articles %}
+            {% set article_id = article['id'] %}
+            {% set title = article['title'] %}
+	    <li>
+              <a href="{{ url_for('article', article_id=article_id) }}">
+                {{ title }}
+              </a>
+            </li>
+          {% endfor %}
+	</ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    <h2><center>Public Articles by Yoheng members</center></h2>
+    <ul>
+      {% for article in articles %}
+        {% set article_id = article['id'] %}
+        {% set title = article['title'] %}
+	<li>
+          <a href="{{ url_for('article', article_id=article_id) }}">
+            {{ title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

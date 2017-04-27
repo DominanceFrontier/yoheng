@@ -1,0 +1,57 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    <h2>Editing story titled: {{ article['title'] }}</h2>
+    <form action="{{ url_for('update_article', article_id=article['id']) }}" method="POST">
+      <label>Title</label><br>
+      <input type="text" id="title" name="title" value="{{ article['title'] }}" required />
+
+      <br>
+
+      <label>Contents</label><br>
+      <textarea rows="10" cols="80" id="body" name="body">{{ article['body'] }}</textarea>
+
+      <br>
+      
+      <label for="TravelDest">Destination:</label>
+      <select name="TravelDest" id="TravelDest" required>
+        {% for dest in destinations %}
+          {% if dest == original_dest %}
+            <option value="{{ dest['id'] }}" selected>{{ dest['title'] }}</option>
+          {% else %}
+            <option value="{{ dest['id'] }}">{{ dest['title'] }}</option>
+          {%  endif %}
+        {% endfor %}
+      </select>
+
+      <br>
+
+      <label for="perm">Permissions:</label>
+      <select name="perm" id="perm" required>
+        {% for perm in perms %}
+          {% if perm == original_perm %}
+            <option value="{{ perm['id'] }}" selected>{{ perm['category'] }}</option>
+          {% else %}
+            <option value="{{ perm['id'] }}">{{ perm['category'] }}</option>
+          {%  endif %}
+        {% endfor %}
+      </select>
+
+      <br>
+
+      <label for="tag">Relevant tag:</label>
+      <select name="tag" id="tag" required>
+        {% for tag in tags %}
+          {% if tag == original_tag %}
+            <option value="{{ tag['id'] }}" selected>{{ tag['line'] }}</option>
+          {% else %}
+            <option value="{{ tag['id'] }}">{{ tag['line'] }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+
+      <!-- <p>Upload a related file: <input type="file" id="file"></p> -->
+      <br><input type="submit" class="btn btn-warning" value="Save changes" />
+    </form>
+  </div>
+{% endblock %}

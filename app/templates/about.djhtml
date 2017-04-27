@@ -1,0 +1,13 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <p>
+    Yoheng means "travel" in Korean. We are a couple of travel afficionados
+    who want to help bring travelers from around the world together as a
+    community. This site is a shrine for all things traveling. For now, we are
+    starting off with a blogroll feature.
+  </p>
+
+  <p>
+    Good things to come soon! Happy Traveling!
+  </p>
+{% endblock %}

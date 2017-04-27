@@ -1,0 +1,28 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    <h2>
+      <center>
+        "{{ article['title'] }}"
+        by
+        <a href={{ url_for('user', user_id=author['id']) }}>
+          {{ author['username'] }}
+        </a>
+    </center>
+    </h2>
+    <p>
+      {{ article['body'] }}
+    </p>
+    <pre>Relevant Destination: {{ dest['title'] }} </pre>
+    <pre>Tagged as: {{ tag['line'] }}</pre>
+
+    {% if session.get('user') == author %}
+      <br>
+      <div style="float:right">
+        <a href="{{ url_for('update_article', article_id=article['id']) }}">
+          Edit this story
+        </a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <p>
+    You can reach us at yoheng2017@gmail.com.
+  </p>
+{% endblock %}

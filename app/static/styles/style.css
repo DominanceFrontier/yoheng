@@ -1,0 +1,67 @@
+body{
+  font-family: Arial; 
+}
+.header { 
+  font-family: Arial Black, Arial;
+  font-weight: 900;
+  font-size:2em;
+  background-color:#000000; color:white; padding:0.5em
+}
+.footer{
+  background-color:rgb(245, 245, 245);
+  color:rgb(51, 51, 51);
+  padding:1em;
+  text-align:center;
+  font-size:100%;
+}
+.flash{
+  padding: 0em;
+  color: white;
+  background-color: #e6f2ff;
+}
+.flash_info{
+  padding:1em;
+  color: white;
+  background-color: turquoise;
+}
+.flash_error{
+  padding:1em;
+  color: white;
+  background-color: darkred;
+  font-weight: bold;
+}
+.flash_warning{
+  padding:1em;
+  color: white;
+  background-color: #ff8080;
+}
+.flash_success{
+  padding:1em;
+  color: beige;
+  background-color: darkgreen;
+}
+.pagetitle{
+  padding:0.5em;
+  font-size:180%;
+  font-weight:bold;
+}
+.form{
+  background-color:#e0e0e0; 
+  padding:2em; 
+  display:inline-block;
+  border-style:solid;
+  border-width:1px;
+  border-color:#a0a0a0; 
+}
+table{ 
+  border-spacing: 1px;
+}
+.navbar{
+  background-color:#e0e0e0; 
+  padding:20px;
+  font-size:100%;
+}
+.navbar-item{
+  float:left;
+  margin:0px;
+}

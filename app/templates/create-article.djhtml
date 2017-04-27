@@ -1,0 +1,45 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    <h2>Share a new story:</h2>
+    <form action="{{ url_for('create_article') }}" method="POST">
+      <label>Title</label><br>
+      <input type="text" id="title" name="title" value="Generic Title" required />
+
+      <br>
+
+      <label>Contents</label><br>
+      <textarea rows="10" cols="80" id="body" name="body">Filler Content</textarea>
+
+      <br>
+      
+      <label for="TravelDest">Destination:</label>
+      <select name="TravelDest" id="TravelDest" required>
+        {% for dest in destinations %}
+          <option value="{{ dest['id'] }}">{{ dest['title'] }}</option>
+        {% endfor %}
+      </select>
+
+      <br>
+
+      <label for="perm">Permissions:</label>
+      <select name="perm" id="perm" required>
+        {% for perm in perms %}
+          <option value="{{ perm['id'] }}">{{ perm['category'] }}</option>
+        {% endfor %}
+      </select>
+
+      <br>
+
+      <label for="tag">Relevant tag:</label>
+      <select name="tag" id="tag" required>
+        {% for tag in tags %}
+          <option value="{{ tag['id'] }}">{{ tag['line'] }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- <p>Upload a related file: <input type="file" id="file"></p> -->
+      <br><input type="submit" class="btn btn-warning" value="Save changes" />
+    </form>
+  </div>
+{% endblock %}

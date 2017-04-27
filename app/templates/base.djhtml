@@ -1,0 +1,43 @@
+<html>
+  <title>{{ page_title }} | Yoheng</title>
+  <head>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='styles/style.css') }}">
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-item"><a href="{{ url_for('index') }}">Home</a></div>
+      <div class="navbar-item"><a href="{{ url_for('about') }}">About</a></div>
+      <div class="navbar-item"><a href="{{ url_for('contact') }}">Contact</a></div>
+      <div class="navbar-item"><a href="{{ url_for('users') }}">Users</a></div>
+      <div style="float:right"><a href="{{ url_for('search') }}">Search</a></div>
+      {% if session['user'] %}
+        <div class="navbar-item"><a href="{{ url_for('logout') }}">Log Out</a></div>
+      {% else %}
+        <div class="navbar-item"><a href="{{ url_for('login') }}">Log In</a></div>
+      {% endif %}
+    </div>
+
+    <div id='flash' class='flash'>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class='flash_{{ category }}'>{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+
+    {% block content %} 
+    {% endblock %}
+
+    <div id='footer' class='footer'>
+      {% if session['user'] %}
+        Be sure to tell your friends about us!
+      {% else %}
+        Register <strong><a href="{{ url_for('signup') }}">NOW</a></strong> to
+        share your travel experiences!
+      {% endif %}
+    </div> 
+  </body>
+</html>

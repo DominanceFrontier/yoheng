@@ -1,0 +1,6 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <h1> Hello, {{username}} </h1>
+  <div id="posts" class="posts">
+  </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <div class="container">
+    <h2>Search Posts</h2>
+    <br><br>    
+    <form action="{{ url_for('search') }}" method="POST" name="search" id="search">
+      <input type="text" id="text" name="text">
+      <input type="submit" class="btn btn-warning" value="Search"/>
+      <input type="radio" name="param" value="title" checked>
+      <label>by title</label>
+      <input type="radio" name="param" value="author">
+      <label>by author</label>
+    </form>
+    <select name="tag" id="tag" form="search">
+      <option value="" >None</option>
+      {% for tag in tags %}
+        <option value="{{ tag['line'] }}">{{ tag['line'] }}</option>
+      {% endfor %}
+    </select>
+    <label>Tag</label>
+    <select name="dest" id="dest" form="search">
+      <option value="" >None</option>
+      {% for dest in destinations %}
+        <option value="{{ dest['id'] }}">{{ dest['title'] }}</option>
+      {% endfor %}
+    </select>
+    <label>Destination</label>
+  </div>
+  <div class="container">
+    <h2>Matching posts from previous search:</h2>
+    <ul>
+      {% for article in articles %}
+	<li>{{ article['title'] }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.djhtml" %}
+{% block content %}
+  <form action="{{ url_for('confirm_signup') }}" method="POST">
+    <table>
+      <tr>
+        <td>
+          Username
+        </td>
+        <td>
+          <input type="text" id="username" name="username" required />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Password
+        </td>
+        <td>
+          <input type="password" id="password" name="password" required />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Confirm Password
+        </td>
+        <td>
+          <input type="cpassword" id="cpassword" name="cpassword" required />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Full Name
+        </td>
+        <td>
+          <input type="text" id="fullname" name="fullname" />
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Sign me up!" />
+        </td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}
