@@ -1,9 +1,9 @@
 import MySQLdb
 
 class DBconfig:
-    passwd=''
-    db='yoheng'
-    host='localhost'
+    passwd='travelingisfun'
+    db='yoheng$default'
+    host='yoheng.mysql.pythonanywhere-services.com'
 
 class DBException(Exception):
     def __init__(self, message):
